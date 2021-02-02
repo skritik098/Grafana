@@ -1,13 +1,16 @@
 ---
 # tasks file for grafana_dashboard
-
+- name: Copy the public Dashboard on to the server
+  copy:
+    src: node-exporter.json
+    dest: "/tmp/node-exporter.json"
 
 - name: Import Grafana dashboard Node Exporter
   grafana_dashboard:
-    grafana_url: http://{{ inventory_host }}:3000
+    grafana_url: http://{{ inventory_hostname }}:3000
     grafana_user: "{{ grafana_user }}"
     grafana_password: "{{ grafana_password }}"
     state: present
     message: Updated by ansible
     overwrite: yes
-    path: node-exporter.json
+    path: "/tmp/node-exporter.json"

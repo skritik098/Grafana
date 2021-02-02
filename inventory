@@ -1,6 +1,6 @@
 [prometheus]
-localhost ansible_user=ec2-user ansible_private_key_file=
-
+localhost ansible_user= ansible_password=
 
 [grafana]
-localhost ansible_user=ec2-user ansible_private_key_file=
+localhost ansible_user= ansible_password=
+
