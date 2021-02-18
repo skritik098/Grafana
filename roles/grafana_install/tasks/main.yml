@@ -34,6 +34,14 @@
     state: enabled
     permanent: yes
     immediate: yes
+  when: ansible_facts['os_family'] | lower != "debian"
+
+- name: Adding firewall rule for Ubuntu
+  ufw:
+    rule: allow
+    port: "3000"
+    proto: "tcp"
+  when: ansible_facts['os_family'] | lower == "debian"
 
 
 - name: "Check if Grafana is accessible."
